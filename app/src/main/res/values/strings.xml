@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">blogkayafirat</string>
+    <string name="title_home">Anasayfa</string>
+    <string name="title_search">Arama</string>
+    <string name="title_profile">Profilim</string>
+    <string name="title_settings">Ayarlar</string>
+    <string name="title_activity_post">Gönderi</string>
+    <string name="title_activity_login">Giriş Yap</string>
+    <string name="title_activity_register">Kayıt Ol</string>
+
+
+    <string name="prompt_email">Eposta Adresin</string>
+    <string name="prompt_password">Şifren</string>
+    <string name="prompt_username">Kullanıcı Adınız</string>
+
+    <string name="action_sign_in">Giriş Yap</string>
+    <string name="action_sign_in_short">Giriş Yap</string>
+    <string name="welcome">"Hoşgeldin"</string>
+    <string name="invalid_username">E-posta adresin hatalı</string>
+    <string name="invalid_password">Şifreniz minimum 5 karakterli olmalıdır.</string>
+    <string name="login_failed">"Giriş Başarısız"</string>
+
+
+    <string name="action_sign_up">Kayıt Ol</string>
+    <string name="action_sign_up_short">Kayıt Ol</string>
+
+    <string name="invalid_email_address">E-posta adresin hatalı</string>
+    <string name="empty">Bu alan boş bırakılamaz.</string>
+
+    <string name="has_upper_case">En az bir karakter büyük harf olmak zorundadır.</string>
+    <string name="has_lower_case">En az bir karakter küçük harf olmak zorundadır.</string>
+    <string name="has_digit">En az bir adet rakam olmak zorundadır.</string>
+    <string name="register_failed">Kayıt Başarısız</string>
+    <string name="register_success">Kayıt Başarılı</string>
+
+
+    <string name="test">
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+        İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
+    </string>
+
+
+
+
+</resources>
