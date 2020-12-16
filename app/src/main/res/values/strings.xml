@@ -4,6 +4,8 @@
     <string name="title_search">Arama</string>
     <string name="title_profile">Profilim</string>
     <string name="title_settings">Ayarlar</string>
+    <string name="title_comment">Yorumlar</string>
+
     <string name="title_activity_post">Gönderi</string>
     <string name="title_activity_login">Giriş Yap</string>
     <string name="title_activity_register">Kayıt Ol</string>
@@ -52,6 +54,7 @@
         İşte neden burada olduğumuzu tartışıyoruz. Her neyse bu konuda yorum mekanizmasını değiştirdim. Bundan sonra her yorum eklemede içinde recaptcha\'ninda kodu olması gerekiyor.
     </string>
 
+    <string name="comment_image">User comment description</string>
 
 
 

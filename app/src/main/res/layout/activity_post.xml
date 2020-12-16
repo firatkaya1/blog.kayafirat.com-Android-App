@@ -8,16 +8,28 @@
     tools:context=".ui.post.PostActivity"
     android:orientation="vertical">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="Java Dersleri"
-        android:textAlignment="gravity"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Java Dersleri"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true" />
+        <ImageButton
+            android:id="@+id/goComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_comment_24"/>
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/SCROLLER_ID"
@@ -25,35 +37,19 @@
         android:layout_height="fill_parent"
         android:scrollbars="vertical">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
-
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:lineHeight="30sp"
-                android:padding="15dp"
-                android:scrollbars="vertical"
-                android:text="@string/test"
-                android:textAlignment="gravity"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-
-            <ListView
-                android:id="@+id/commentListView"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:dividerHeight="2dp"
-                android:divider="@color/black"
-                android:listSelector="@drawable/list_view_selector"/>
-        </LinearLayout>
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:lineHeight="30sp"
+            android:padding="15dp"
+            android:scrollbars="vertical"
+            android:text="@string/test"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:nestedScrollingEnabled="true"/>
     </ScrollView>
-
 
 
 </LinearLayout>

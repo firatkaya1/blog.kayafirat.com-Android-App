@@ -1,4 +1,4 @@
-package com.kayafirat.blogkayafirat.ui.post;
+package com.kayafirat.blogkayafirat.ui.comment;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,18 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.kayafirat.blogkayafirat.R;
+import com.kayafirat.blogkayafirat.model.Comment;
+
+import java.util.List;
 
 public class CustomAdapter extends BaseAdapter {
     LayoutInflater inflter;
-    String testList[];
+    List<Comment> comments;
 
-    public CustomAdapter(Context applicationContext, String[] testList) {
-        this.testList = testList;
+    public CustomAdapter(Context applicationContext, List<Comment> comments) {
+        this.comments = comments;
         inflter = (LayoutInflater.from(applicationContext));
     }
     @Override
     public int getCount() {
-        return testList.length;
+        return comments.size();
     }
 
     @Override
@@ -36,7 +39,11 @@ public class CustomAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.item_comment, null);
         TextView commentDetail = view.findViewById(R.id.commentDetail);
-        commentDetail.setText(testList[i]);
+        TextView commentDate = view.findViewById(R.id.commentDate);
+        TextView commentUsername = view.findViewById(R.id.commentUsername);
+        commentDetail.setText(comments.get(i).getCommentMessage());
+        commentDate.setText(comments.get(i).getCommentTime());
+        commentUsername.setText(comments.get(i).getUsername());
         return view;
     }
 
