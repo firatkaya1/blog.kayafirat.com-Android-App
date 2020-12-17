@@ -10,6 +10,9 @@ import com.kayafirat.blogkayafirat.R;
 import com.kayafirat.blogkayafirat.data.LoginRepository;
 import com.kayafirat.blogkayafirat.data.Result;
 import com.kayafirat.blogkayafirat.data.model.LoggedInUser;
+import com.kayafirat.blogkayafirat.model.User;
+import com.kayafirat.blogkayafirat.service.IUserService;
+import com.kayafirat.blogkayafirat.service.impl.UserService;
 
 import java.util.Arrays;
 
@@ -35,10 +38,12 @@ public class RegisterViewModel extends ViewModel {
     public void register(String emailAddress,String username, String password) {
         // can be launched in a separate asynchronous job
         Result<LoggedInUser> result = loginRepository.login(username, password);
-
+        IUserService userService = new UserService();
         if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            registerResult.setValue(new RegisterResult(new RegisteredInUserView(data.getDisplayName())));
+            registerResult.setValue(new RegisterResult(new RegisteredInUserView(username)));
+            userService.saveUser(new User(emailAddress,username,password));
+            System.out.println("successfull");
+
         } else {
             registerResult.setValue(new RegisterResult(R.string.register_failed));
         }

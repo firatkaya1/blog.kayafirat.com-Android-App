@@ -29,6 +29,8 @@ public class CommentActivity  extends AppCompatActivity {
         comments.add(new Comment("8","Fırat Kaya","test","Konunuzu çok beğendim. Harikaymış","2019/12/12 23:12:12","2019/12/12 23:12:12"));
         comments.add(new Comment("9","Fırat Kaya","test","Konunuzu çok beğendim. Harikaymış","2019/12/12 23:12:12","2019/12/12 23:12:12"));
 
+
+
         CustomAdapter customAdapter = new CustomAdapter(getBaseContext(), comments);
         commentListView.setAdapter(customAdapter);
     }

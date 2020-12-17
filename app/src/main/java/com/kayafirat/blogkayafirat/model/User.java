@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class User {
 
-    private String userEmail;
-
     private String userId;
+
+    private String userEmail;
 
     private String userName;
 
@@ -14,16 +14,52 @@ public class User {
 
     private Date userRegisterDate;
 
-    private String userBirthdayDate;
+    public User() {
+    }
 
-    private String userProfilePhoto;
+    public User( String userEmail, String userName, String userPassword) {
+        this.userEmail = userEmail;
+        this.userName = userName;
+        this.userPassword = userPassword;
+    }
 
-    private boolean isVerification;
+    public String getUserId() {
+        return userId;
+    }
 
-    private String role;
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-    private UserProfile userProfile;
+    public String getUserEmail() {
+        return userEmail;
+    }
 
-    private UserPermissions userPermissions;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public Date getUserRegisterDate() {
+        return userRegisterDate;
+    }
+
+    public void setUserRegisterDate(Date userRegisterDate) {
+        this.userRegisterDate = userRegisterDate;
+    }
 }

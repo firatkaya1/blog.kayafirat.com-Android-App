@@ -116,6 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 RegisterViewModel.register(emailEditText.getText().toString(),usernameEditText.getText().toString(), passwordEditText.getText().toString());
+
             }
         });
 
