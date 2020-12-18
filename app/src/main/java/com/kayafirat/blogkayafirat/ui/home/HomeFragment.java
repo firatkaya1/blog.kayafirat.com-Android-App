@@ -2,24 +2,19 @@ package com.kayafirat.blogkayafirat.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.kayafirat.blogkayafirat.R;
-import com.kayafirat.blogkayafirat.model.Post;
 import com.kayafirat.blogkayafirat.service.IPostService;
 import com.kayafirat.blogkayafirat.service.impl.PostService;
 import com.kayafirat.blogkayafirat.ui.post.PostActivity;
-
 
 
 public class HomeFragment extends Fragment {
@@ -39,7 +34,7 @@ public class HomeFragment extends Fragment {
         postListView.setOnItemClickListener((parent, view, position, id) -> {
 
             Intent intent = new Intent(getActivity(), PostActivity.class);
-            intent.putExtra("postId",id);
+            intent.putExtra("post",postService.getPost(String.valueOf(id)));
             startActivity(intent);
         });
 

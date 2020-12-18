@@ -10,13 +10,15 @@ import android.widget.TextView;
 import com.kayafirat.blogkayafirat.R;
 import com.kayafirat.blogkayafirat.model.Comment;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CustomAdapter extends BaseAdapter {
     LayoutInflater inflter;
-    List<Comment> comments;
+    HashMap<String,String>comments;
 
-    public CustomAdapter(Context applicationContext, List<Comment> comments) {
+    public CustomAdapter(Context applicationContext, HashMap<String,String> comments) {
         this.comments = comments;
         inflter = (LayoutInflater.from(applicationContext));
     }
@@ -41,9 +43,10 @@ public class CustomAdapter extends BaseAdapter {
         TextView commentDetail = view.findViewById(R.id.commentDetail);
         TextView commentDate = view.findViewById(R.id.commentDate);
         TextView commentUsername = view.findViewById(R.id.commentUsername);
-        commentDetail.setText(comments.get(i).getCommentMessage());
-        commentDate.setText(comments.get(i).getCommentTime());
-        commentUsername.setText(comments.get(i).getUsername());
+        System.out.println(comments);
+    /*    commentDetail.setText(comments.get(0).getCommentBody());
+        commentDate.setText(comments.get(0).getCommentDate());
+        commentUsername.setText(comments.get(0).getUserName());*/
         return view;
     }
 

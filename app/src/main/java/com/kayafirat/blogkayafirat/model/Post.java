@@ -1,11 +1,11 @@
 package com.kayafirat.blogkayafirat.model;
 
-import com.android.volley.toolbox.StringRequest;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Post {
+
+public class Post implements Serializable {
 
     private String postId;
 
@@ -15,20 +15,22 @@ public class Post {
 
     private String postDetail;
 
-    private String postTime;
+    private String postRegisterDate;
 
     private String postMaxView;
 
-    public Post() {
-    }
+    private ArrayList<Comment> comment;
 
-    public Post(String postId, String postTitle, String postHeader, String postDetail, String postTime, String postMaxView) {
+    public Post() { }
+
+    public Post(String postId, String postTitle, String postHeader, String postDetail, String postRegisterDate, String postMaxView,ArrayList<Comment> comment) {
         this.postId = postId;
         this.postTitle = postTitle;
         this.postHeader = postHeader;
         this.postDetail = postDetail;
-        this.postTime = postTime;
+        this.postRegisterDate = postRegisterDate;
         this.postMaxView = postMaxView;
+        this.comment = comment;
     }
 
     public String getPostId() {
@@ -63,12 +65,12 @@ public class Post {
         this.postDetail = postDetail;
     }
 
-    public String getPostTime() {
-        return postTime;
+    public String getPostRegisterDate() {
+        return postRegisterDate;
     }
 
-    public void setPostTime(String postTime) {
-        this.postTime = postTime;
+    public void setPostRegisterDate(String postTime) {
+        this.postRegisterDate = postTime;
     }
 
     public String getPostMaxView() {
@@ -79,5 +81,11 @@ public class Post {
         this.postMaxView = postMaxView;
     }
 
+    public ArrayList<Comment> getComments() {
+        return comment;
+    }
 
+    public void setComments(ArrayList<Comment> comment) {
+        this.comment = comment;
+    }
 }

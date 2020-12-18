@@ -52,7 +52,7 @@ public class CustomAdapter extends BaseAdapter {
 
         postTitle.setText(postList.get(i).getPostTitle());
         postHeader.setText(postList.get(i).getPostHeader());
-        postView.setText(postList.get(i).getPostTime());
+        postView.setText(postList.get(i).getPostRegisterDate());
         return view;
 
     }

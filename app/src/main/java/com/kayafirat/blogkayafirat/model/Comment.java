@@ -1,26 +1,22 @@
 package com.kayafirat.blogkayafirat.model;
 
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable {
 
     private String commentId;
 
-    private String username;
+    private String userName;
 
-    private String userProfilePhoto;
+    private String commentBody;
 
-    private String commentMessage;
+    private String commentDate;
 
-    private String commentTime;
-
-    private String commentUpdateTime;
-
-    public Comment(String commentId, String username, String userProfilePhoto, String commentMessage, String commentTime, String commentUpdateTime) {
+    public Comment(String commentId, String userName, String commentBody, String commentDate) {
         this.commentId = commentId;
-        this.username = username;
-        this.userProfilePhoto = userProfilePhoto;
-        this.commentMessage = commentMessage;
-        this.commentTime = commentTime;
-        this.commentUpdateTime = commentUpdateTime;
+        this.userName = userName;
+        this.commentBody = commentBody;
+        this.commentDate = commentDate;
     }
 
     public String getCommentId() {
@@ -31,43 +27,37 @@ public class Comment {
         this.commentId = commentId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUserProfilePhoto() {
-        return userProfilePhoto;
+    public String getCommentBody() {
+        return commentBody;
     }
 
-    public void setUserProfilePhoto(String userProfilePhoto) {
-        this.userProfilePhoto = userProfilePhoto;
+    public void setCommentBody(String commentBody) {
+        this.commentBody = commentBody;
     }
 
-    public String getCommentMessage() {
-        return commentMessage;
+    public String getCommentDate() {
+        return commentDate;
     }
 
-    public void setCommentMessage(String commentMessage) {
-        this.commentMessage = commentMessage;
+    public void setCommentDate(String commentDate) {
+        this.commentDate = commentDate;
     }
 
-    public String getCommentTime() {
-        return commentTime;
-    }
-
-    public void setCommentTime(String commentTime) {
-        this.commentTime = commentTime;
-    }
-
-    public String getCommentUpdateTime() {
-        return commentUpdateTime;
-    }
-
-    public void setCommentUpdateTime(String commentUpdateTime) {
-        this.commentUpdateTime = commentUpdateTime;
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId='" + commentId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", commentBody='" + commentBody + '\'' +
+                ", commentDate='" + commentDate + '\'' +
+                '}';
     }
 }
