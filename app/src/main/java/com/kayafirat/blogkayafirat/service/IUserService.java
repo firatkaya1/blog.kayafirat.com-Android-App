@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public interface IUserService {
 
-    User getUserByEmail(String email);
+    User getUser(long email);
 
     User saveUser(User user);
 

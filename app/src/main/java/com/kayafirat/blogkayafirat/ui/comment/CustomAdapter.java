@@ -16,9 +16,9 @@ import java.util.List;
 
 public class CustomAdapter extends BaseAdapter {
     LayoutInflater inflter;
-    HashMap<String,String>comments;
+    ArrayList<Comment> comments;
 
-    public CustomAdapter(Context applicationContext, HashMap<String,String> comments) {
+    public CustomAdapter(Context applicationContext, ArrayList<Comment> comments) {
         this.comments = comments;
         inflter = (LayoutInflater.from(applicationContext));
     }
@@ -43,10 +43,11 @@ public class CustomAdapter extends BaseAdapter {
         TextView commentDetail = view.findViewById(R.id.commentDetail);
         TextView commentDate = view.findViewById(R.id.commentDate);
         TextView commentUsername = view.findViewById(R.id.commentUsername);
-        System.out.println(comments);
-    /*    commentDetail.setText(comments.get(0).getCommentBody());
+
+        commentDetail.setText(comments.get(0).getCommentBody());
         commentDate.setText(comments.get(0).getCommentDate());
-        commentUsername.setText(comments.get(0).getUserName());*/
+        commentUsername.setText(comments.get(0).getUserName());
+
         return view;
     }
 

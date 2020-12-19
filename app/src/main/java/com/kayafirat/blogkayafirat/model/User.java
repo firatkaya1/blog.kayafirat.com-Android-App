@@ -1,42 +1,40 @@
 package com.kayafirat.blogkayafirat.model;
 
-import java.util.Date;
 
 public class User {
 
-    private String userId;
+    private String id;
 
-    private String userEmail;
+    private String emailAddress;
 
     private String userName;
 
     private String userPassword;
 
-    private Date userRegisterDate;
+    private String userRegisterDate;
 
-    public User() {
-    }
+    public User() {}
 
-    public User( String userEmail, String userName, String userPassword) {
-        this.userEmail = userEmail;
+    public User(String emailAddress, String userName, String userPassword) {
+        this.emailAddress = emailAddress;
         this.userName = userName;
         this.userPassword = userPassword;
     }
 
     public String getUserId() {
-        return userId;
+        return id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserId(String id) {
+        this.id = id;
     }
 
     public String getUserEmail() {
-        return userEmail;
+        return emailAddress;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setUserEmail(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getUserName() {
@@ -55,11 +53,11 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public Date getUserRegisterDate() {
+    public String getUserRegisterDate() {
         return userRegisterDate;
     }
 
-    public void setUserRegisterDate(Date userRegisterDate) {
+    public void setUserRegisterDate(String userRegisterDate) {
         this.userRegisterDate = userRegisterDate;
     }
 }

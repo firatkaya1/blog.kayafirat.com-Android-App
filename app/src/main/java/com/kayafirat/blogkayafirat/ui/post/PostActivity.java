@@ -2,6 +2,7 @@ package com.kayafirat.blogkayafirat.ui.post;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import com.kayafirat.blogkayafirat.ui.comment.CommentActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,23 +33,36 @@ public class PostActivity extends AppCompatActivity {
         TextView postDetail = findViewById(R.id.postDetail);
 
         Post post = (Post) getIntent().getExtras().getSerializable("post");
-        JSONArray jsonArray = new JSONArray(post.getComments());
-        try {
-            System.out.println(jsonArray.getJSONObject(0));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        ArrayList<Comment> comments = convertToArray(post.getComments());
+
 
         postTitle.setText(post.getPostTitle());
+
         postDetail.setText(post.getPostDetail());
 
         btnComment.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
-            ArrayList<Comment> comments = post.getComments();
-            intent.putExtra("comments", comments);
+            intent.putExtra("comments",comments);
             startActivity(intent);
         });
 
+    }
+
+    private ArrayList<Comment> convertToArray(ArrayList<Comment> comment){
+        JSONArray jsonArray = new JSONArray(comment);
+        ArrayList<Comment> comments = new ArrayList<>();
+
+        for (int i=0;i<jsonArray.length();i++){
+            try {
+                comments.add(new Comment(new JSONObject(jsonArray.getString(i)).get("commentId").toString(),
+                        new JSONObject(jsonArray.getString(i)).get("userName").toString(),
+                        new JSONObject(jsonArray.getString(i)).get("commentBody").toString(),
+                        new JSONObject(jsonArray.getString(i)).get("commentDate").toString()));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return comments;
     }
 
 }

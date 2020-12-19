@@ -10,17 +10,17 @@ import com.kayafirat.blogkayafirat.R;
 import com.kayafirat.blogkayafirat.model.Comment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class CommentActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
+
         ListView commentListView = findViewById(R.id.commentListView);
-        HashMap<String,String> comments = (HashMap<String,String>) getIntent().getSerializableExtra("comments");
-        System.out.println(comments.get("commentId"));
+
+
+        ArrayList<Comment> comments =(ArrayList<Comment>) getIntent().getSerializableExtra("comments");
 
 
         CustomAdapter customAdapter = new CustomAdapter(getBaseContext(), comments);

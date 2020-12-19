@@ -11,5 +11,5 @@ public interface IPostService {
 
         Post getPost(String id);
 
-
+        ArrayList<Post> searchPost(String keyword);
 }
