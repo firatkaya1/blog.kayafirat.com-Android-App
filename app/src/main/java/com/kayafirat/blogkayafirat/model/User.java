@@ -15,25 +15,27 @@ public class User {
 
     public User() {}
 
-    public User(String emailAddress, String userName, String userPassword) {
+    public User(String id,String emailAddress, String userName, String userPassword,String userRegisterDate) {
+        this.id = id;
         this.emailAddress = emailAddress;
         this.userName = userName;
         this.userPassword = userPassword;
+        this.userRegisterDate = userRegisterDate;
     }
 
-    public String getUserId() {
+    public String getId() {
         return id;
     }
 
-    public void setUserId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getUserEmail() {
+    public String getEmailAddress() {
         return emailAddress;
     }
 
-    public void setUserEmail(String emailAddress) {
+    public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 

@@ -4,20 +4,27 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Patterns;
 
+import com.kayafirat.blogkayafirat.MainActivity;
 import com.kayafirat.blogkayafirat.data.LoginRepository;
 import com.kayafirat.blogkayafirat.data.Result;
 import com.kayafirat.blogkayafirat.data.model.LoggedInUser;
 import com.kayafirat.blogkayafirat.R;
+import com.kayafirat.blogkayafirat.model.AuthenticateRequest;
+import com.kayafirat.blogkayafirat.model.User;
+import com.kayafirat.blogkayafirat.service.IUserService;
+import com.kayafirat.blogkayafirat.service.impl.UserService;
 
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
     private LoginRepository loginRepository;
-
-    LoginViewModel(LoginRepository loginRepository) {
+    LoginViewModel(LoginRepository loginRepository ) {
         this.loginRepository = loginRepository;
     }
 
@@ -30,12 +37,15 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void login(String username, String password) {
-        // can be launched in a separate asynchronous job
         Result<LoggedInUser> result = loginRepository.login(username, password);
 
         if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
+            loginResult.setValue(new LoginResult(new LoggedInUserView(username)));
+
+            IUserService userService = new UserService();
+            Long id = userService.login(new AuthenticateRequest(username,password));
+            savePreferences(id);
+
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
         }
@@ -66,5 +76,13 @@ public class LoginViewModel extends ViewModel {
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
         return password != null && password.trim().length() > 5;
+    }
+
+
+    private void savePreferences(Long id){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(LoginActivity.applicationContext());
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putLong("id", id);
+        editor.apply();
     }
 }

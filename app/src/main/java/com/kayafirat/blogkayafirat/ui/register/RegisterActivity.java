@@ -41,43 +41,37 @@ public class RegisterActivity extends AppCompatActivity {
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         goLogin.setEnabled(true);
-        RegisterViewModel.getRegisterFormState().observe(this, new Observer<RegisterFormState>() {
-            @Override
-            public void onChanged(@Nullable RegisterFormState RegisterFormState) {
-                if (RegisterFormState == null) {
-                    return;
-                }
-                RegisterButton.setEnabled(RegisterFormState.isDataValid());
+        RegisterViewModel.getRegisterFormState().observe(this, RegisterFormState -> {
+            if (RegisterFormState == null) {
+                return;
+            }
+            RegisterButton.setEnabled(RegisterFormState.isDataValid());
 
-                if (RegisterFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(RegisterFormState.getUsernameError()));
-                }
-                if (RegisterFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(RegisterFormState.getPasswordError()));
-                }
-                if(RegisterFormState.getEmailAddressError() != null){
-                    emailEditText.setError(getString(RegisterFormState.getEmailAddressError()));
-                }
+            if (RegisterFormState.getUsernameError() != null) {
+                usernameEditText.setError(getString(RegisterFormState.getUsernameError()));
+            }
+            if (RegisterFormState.getPasswordError() != null) {
+                passwordEditText.setError(getString(RegisterFormState.getPasswordError()));
+            }
+            if(RegisterFormState.getEmailAddressError() != null){
+                emailEditText.setError(getString(RegisterFormState.getEmailAddressError()));
             }
         });
 
-        RegisterViewModel.getRegisterResult().observe(this, new Observer<RegisterResult>() {
-            @Override
-            public void onChanged(@Nullable RegisterResult RegisterResult) {
-                if (RegisterResult == null) {
-                    return;
-                }
-                loadingProgressBar.setVisibility(View.GONE);
-                if (RegisterResult.getError() != null) {
-                    showRegisterFailed(RegisterResult.getError());
-                }
-                if (RegisterResult.getSuccess() != null) {
-                    updateUiWithUser();
-                }
-                setResult(Activity.RESULT_OK);
-
-                finish();
+        RegisterViewModel.getRegisterResult().observe(this, RegisterResult -> {
+            if (RegisterResult == null) {
+                return;
             }
+            loadingProgressBar.setVisibility(View.GONE);
+            if (RegisterResult.getError() != null) {
+                showRegisterFailed(RegisterResult.getError());
+            }
+            if (RegisterResult.getSuccess() != null) {
+                updateUiWithUser();
+            }
+            setResult(Activity.RESULT_OK);
+
+            finish();
         });
 
         TextWatcher afterTextChangedListener = new TextWatcher() {
@@ -99,33 +93,22 @@ public class RegisterActivity extends AppCompatActivity {
 
         usernameEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    RegisterViewModel.register(emailEditText.getText().toString(),usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
-            }
-        });
-
-        RegisterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
+        passwordEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
                 RegisterViewModel.register(emailEditText.getText().toString(),usernameEditText.getText().toString(), passwordEditText.getText().toString());
-
             }
+            return false;
         });
 
-        goLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
+        RegisterButton.setOnClickListener(v -> {
+            loadingProgressBar.setVisibility(View.VISIBLE);
+            RegisterViewModel.register(emailEditText.getText().toString(),usernameEditText.getText().toString(), passwordEditText.getText().toString());
+
+        });
+
+        goLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 

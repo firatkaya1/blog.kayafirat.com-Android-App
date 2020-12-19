@@ -36,12 +36,14 @@ public class RegisterViewModel extends ViewModel {
     }
 
     public void register(String emailAddress,String username, String password) {
-        // can be launched in a separate asynchronous job
+
         Result<LoggedInUser> result = loginRepository.login(username, password);
+
         IUserService userService = new UserService();
         if (result instanceof Result.Success) {
             registerResult.setValue(new RegisterResult(new RegisteredInUserView(username)));
-            userService.saveUser(new User(emailAddress,username,password));
+            System.out.println("emailAddress ::"+emailAddress);
+            userService.saveUser(new User(null,emailAddress,username,password,null));
             System.out.println("successfull");
 
         } else {

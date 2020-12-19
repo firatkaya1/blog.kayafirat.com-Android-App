@@ -31,8 +31,8 @@ public class ProfileFragment extends Fragment {
         IUserService userService = new UserService();
 
         User user = userService.getUser(1);
-        userId.setText(user.getUserId());
-        emailAddress.setText(user.getUserEmail());
+        userId.setText(user.getId());
+        emailAddress.setText(user.getEmailAddress());
         userName.setText(user.getUserName());
         registerDate.setText(user.getUserRegisterDate());
 
