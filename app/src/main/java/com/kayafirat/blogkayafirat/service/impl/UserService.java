@@ -31,6 +31,7 @@ public class UserService implements IUserService {
             RestTemplate restTemplate = new RestTemplate();
             Map map = restTemplate.getForObject(USER_URI.concat(String.valueOf(id)), Map.class);
             user = new User();
+            System.out.println(user);
             user.setId(map.get("id").toString());
             user.setEmailAddress(map.get("emailAddress").toString());
             user.setUserName(map.get("userName").toString());

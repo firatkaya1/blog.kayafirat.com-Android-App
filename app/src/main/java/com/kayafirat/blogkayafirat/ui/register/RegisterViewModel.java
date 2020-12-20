@@ -42,9 +42,7 @@ public class RegisterViewModel extends ViewModel {
         IUserService userService = new UserService();
         if (result instanceof Result.Success) {
             registerResult.setValue(new RegisterResult(new RegisteredInUserView(username)));
-            System.out.println("emailAddress ::"+emailAddress);
             userService.saveUser(new User(null,emailAddress,username,password,null));
-            System.out.println("successfull");
 
         } else {
             registerResult.setValue(new RegisterResult(R.string.register_failed));

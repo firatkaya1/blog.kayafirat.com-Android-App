@@ -5,19 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.kayafirat.blogkayafirat.R;
@@ -67,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                 showRegisterFailed(RegisterResult.getError());
             }
             if (RegisterResult.getSuccess() != null) {
-                updateUiWithUser();
+                updateUiWithUser(RegisterActivity.this);
             }
             setResult(Activity.RESULT_OK);
 
@@ -102,6 +98,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         RegisterButton.setOnClickListener(v -> {
             loadingProgressBar.setVisibility(View.VISIBLE);
+            System.out.println("usernameEditText.getText().toString() :"+usernameEditText.getText().toString());
+            System.out.println("usernameEditText.getText().toString() :"+passwordEditText.getText().toString());
             RegisterViewModel.register(emailEditText.getText().toString(),usernameEditText.getText().toString(), passwordEditText.getText().toString());
 
         });
@@ -112,12 +110,16 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void updateUiWithUser() {
+    private void updateUiWithUser(Activity activity) {
         String welcome = getString(R.string.register_success);
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(activity, LoginActivity.class);
+        startActivity(intent);
     }
 
     private void showRegisterFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
+
+
 }
