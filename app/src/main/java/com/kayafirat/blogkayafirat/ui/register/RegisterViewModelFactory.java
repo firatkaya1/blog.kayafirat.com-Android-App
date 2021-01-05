@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.kayafirat.blogkayafirat.data.LoginDataSource;
 import com.kayafirat.blogkayafirat.data.LoginRepository;
-import com.kayafirat.blogkayafirat.ui.login.LoginViewModel;
 
 public class RegisterViewModelFactory  implements ViewModelProvider.Factory {
 

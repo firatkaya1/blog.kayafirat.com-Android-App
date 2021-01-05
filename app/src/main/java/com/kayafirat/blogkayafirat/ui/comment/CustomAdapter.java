@@ -29,12 +29,12 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return comments.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return Long.valueOf(comments.get(i).getCommentId());
     }
 
     @Override
@@ -44,9 +44,9 @@ public class CustomAdapter extends BaseAdapter {
         TextView commentDate = view.findViewById(R.id.commentDate);
         TextView commentUsername = view.findViewById(R.id.commentUsername);
 
-        commentDetail.setText(comments.get(0).getCommentBody());
-        commentDate.setText(comments.get(0).getCommentDate());
-        commentUsername.setText(comments.get(0).getUserName());
+        commentDetail.setText(comments.get(i).getCommentBody());
+        commentDate.setText(comments.get(i).getCommentDate());
+        commentUsername.setText(comments.get(i).getUserName());
 
         return view;
     }

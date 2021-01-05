@@ -31,7 +31,6 @@ public class UserService implements IUserService {
             RestTemplate restTemplate = new RestTemplate();
             Map map = restTemplate.getForObject(USER_URI.concat(String.valueOf(id)), Map.class);
             user = new User();
-            System.out.println(user);
             user.setId(map.get("id").toString());
             user.setEmailAddress(map.get("emailAddress").toString());
             user.setUserName(map.get("userName").toString());
@@ -84,9 +83,25 @@ public class UserService implements IUserService {
 
     @Override
     public User updateUser(User user) {
+        int SDK_INT = android.os.Build.VERSION.SDK_INT;
+
+        if (SDK_INT > 8)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            RestTemplate restTemplate = new RestTemplate();
+            HttpEntity<User> entity = new HttpEntity<User>(user);
+            ResponseEntity<User> map = restTemplate.exchange(USER_URI,HttpMethod.PUT,entity,User.class);
+            System.out.println("map : "+map.getBody());
+
+/*            user.setId(map.get("id").toString());
+            user.setEmailAddress(map.get("emailAddress").toString());
+            user.setUserName(map.get("userName").toString());
+            user.setUserPassword(map.get("userPassword").toString());
+            user.setUserRegisterDate(map.get("userRegisterDate").toString());*/
+            return user;
+        }
         return null;
     }
-
-
-
 }

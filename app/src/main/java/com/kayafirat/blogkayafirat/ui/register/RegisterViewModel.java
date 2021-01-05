@@ -14,7 +14,6 @@ import com.kayafirat.blogkayafirat.model.User;
 import com.kayafirat.blogkayafirat.service.IUserService;
 import com.kayafirat.blogkayafirat.service.impl.UserService;
 
-import java.util.Arrays;
 
 public class RegisterViewModel extends ViewModel {
 

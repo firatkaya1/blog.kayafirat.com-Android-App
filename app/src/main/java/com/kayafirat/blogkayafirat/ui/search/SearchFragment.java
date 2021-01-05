@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.kayafirat.blogkayafirat.R;
 import com.kayafirat.blogkayafirat.model.Post;
@@ -26,10 +24,8 @@ import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-    private SearchViewModel searchViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         View root = inflater.inflate(R.layout.fragment_search, container, false);
         EditText searchText = root.findViewById(R.id.text_search);
         final Button btnSearch = root.findViewById(R.id.btnSearch);
@@ -38,19 +34,16 @@ public class SearchFragment extends Fragment {
 
         IPostService postService = new PostService();
 
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList<Post> postList  = postService.searchPost(searchText.getText().toString().trim());
-                CustomAdapter customAdapter = new CustomAdapter(getContext(),postList);
-                postListView.setAdapter(customAdapter);
-                if (postList.size() > 0){
-                    findedResult.setText("Toplam "+postList.size()+" adet sonuç bulundu.");
-                } else {
-                    findedResult.setText("Sonuç bulunamadı.");
-                }
-
+        btnSearch.setOnClickListener(v -> {
+            ArrayList<Post> postList  = postService.searchPost(searchText.getText().toString().trim());
+            CustomAdapter customAdapter = new CustomAdapter(getContext(),postList);
+            postListView.setAdapter(customAdapter);
+            if (postList.size() > 0){
+                findedResult.setText("Toplam "+postList.size()+" adet sonuç bulundu.");
+            } else {
+                findedResult.setText("Sonuç bulunamadı.");
             }
+
         });
 
         postListView.setOnItemClickListener((parent, view, position, id) -> {
@@ -58,8 +51,6 @@ public class SearchFragment extends Fragment {
             intent.putExtra("post",postService.getPost(String.valueOf(id)));
             startActivity(intent);
         });
-
-
 
 
         return root;
