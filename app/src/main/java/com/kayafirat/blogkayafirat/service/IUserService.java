@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public interface IUserService {
 
-    User getUser(long email);
+    User getUser(long id);
 
     Boolean saveUser(User user);
 

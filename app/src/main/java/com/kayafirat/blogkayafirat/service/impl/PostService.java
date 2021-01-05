@@ -19,6 +19,7 @@ import java.util.Map;
 public class PostService  implements IPostService  {
 
     private final static String POST_URI = "https://api.kayafirat.com/mobile/post/";
+    private final static String COMMENT_URI = "https://api.kayafirat.com/mobile/comment/";
     private final static String SEARCH_POST_URI = "https://api.kayafirat.com/mobile/post/search/";
 
 
@@ -109,5 +110,24 @@ public class PostService  implements IPostService  {
         return post;
     }
 
+    @Override
+    public Comment commentAdd(String commentBody,String username,String id) {
+        Comment comment = new Comment();
+        comment.setUserName(username);
+        comment.setCommentBody(commentBody);
+        int SDK_INT = android.os.Build.VERSION.SDK_INT;
 
+        if (SDK_INT > 8)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            RestTemplate restTemplate = new RestTemplate();
+            String ok = restTemplate.postForObject(COMMENT_URI.concat(id),comment,String.class);
+        }
+
+        return comment;
+    }
+
+///base.apk (No such file or directory)
 }

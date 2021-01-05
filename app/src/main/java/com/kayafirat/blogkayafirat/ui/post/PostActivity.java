@@ -43,6 +43,7 @@ public class PostActivity extends AppCompatActivity {
         btnComment.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
             intent.putExtra("comments",comments);
+            intent.putExtra("postID",post.getPostId());
             startActivity(intent);
         });
 

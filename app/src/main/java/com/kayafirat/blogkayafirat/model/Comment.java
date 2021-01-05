@@ -12,6 +12,8 @@ public class Comment implements Serializable {
 
     private String commentDate;
 
+    public Comment(){ }
+
     public Comment(String commentId, String userName, String commentBody, String commentDate) {
         this.commentId = commentId;
         this.userName = userName;

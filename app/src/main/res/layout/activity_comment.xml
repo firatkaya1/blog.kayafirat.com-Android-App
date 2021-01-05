@@ -4,7 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.comment.CommentActivity">
+    tools:context=".ui.comment.CommentActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnAddComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Yorum Ekle"
+        />
 
     <ListView
         android:id="@+id/commentListView"
@@ -12,6 +20,7 @@
         android:layout_height="match_parent"
         android:dividerHeight="2dp"
         android:divider="@color/black"
+        android:layout_marginTop="50dp"
         android:listSelector="@drawable/list_view_selector"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
